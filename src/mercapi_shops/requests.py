@@ -8,19 +8,16 @@ class ShopsSearchRequestData:
     keyword: str
     shop_id: str
     cursor:  str = ""
-    in_stock: Optional[bool] = None    # 保留：販売中/売り切れ/全て
+    in_stock: Optional[bool] = None    # 保留：販売中/売り切れ/全て（仅用于客户端本地过滤）
     order_by: Optional[str] = None     # 保留字段，但不再发给后端；供客户端排序使用
 
     @property
     def data(self):
+        # 只给后端传递 query；不要传 inStock（当前 schema 不支持，会触发 400）
         search = {"query": self.keyword}
 
-        # 仅 in_stock 合法放在 search 里
-        if self.in_stock is not None:
-            search["inStock"] = bool(self.in_stock)
-
-        # 注意：不要把 order_by 放到 search 里，否则 400
-        # （错误信息：Field "orderBy" is not defined by type "ProductSearchCriteria"）
+        # 注意：不要把 in_stock / order_by 放到 search 里，否则会 400
+        # （错误示例：Field "inStock" is not defined by type "ProductSearchCriteria"）
 
         return {
             "search":  search,
