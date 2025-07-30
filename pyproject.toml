@@ -1,0 +1,50 @@
+[project]
+name = "mercapi-shops"
+version = "0.0.2"
+description = "Unofficial Mercari-Shops (mercari-shops.com) async client"
+authors = [{ name = "EricMeteorite" }]
+readme = { file = "README.md", content-type = "text/markdown" }
+requires-python = ">=3.9"
+dependencies = ["httpx>=0.24"]  # 或更保守："httpx>=0.24,<0.28"
+license = { file = "LICENSE" }  # ★ 建议新增
+
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Framework :: AsyncIO",
+  "Typing :: Typed",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Intended Audience :: Developers",
+  "Topic :: Internet :: WWW/HTTP"
+]
+keywords = ["mercari", "mercari-shops", "graphql", "async", "httpx"]
+
+[project.urls]  # ★ 建议新增
+Homepage = "https://github.com/EricMeteorite"
+Repository = "https://github.com/EricMeteorite/mercapi_shops"
+Issues = "https://github.com/EricMeteorite/mercapi_shops/issues"
+
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["mercapi_shops*"]
+
+# 声明需要被包含的包内静态文件（这里是 py.typed）
+[tool.setuptools.package-data]
+mercapi_shops = ["py.typed"]
+
+# （可选）如果你将来想提供命令行脚本，可以这样暴露：
+# [project.scripts]
+# mercapi-shops = "mercapi_shops.cli:main"
