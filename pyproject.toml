@@ -1,17 +1,19 @@
 [project]
 name = "mercapi-shops"
-version = "0.0.4"
-description = "Unofficial Mercari-Shops (mercari-shops.com) async client"
+version = "0.0.5"
+description = "Unofficial Mercari Shops async client (jp.mercari.com / mercari-shops.com)"
 authors = [{ name = "EricMeteorite" }]
 readme = { file = "README.md", content-type = "text/markdown" }
-requires-python = ">=3.9"
-dependencies = ["httpx[http2]>=0.24"]
+requires-python = ">=3.10"
+dependencies = [
+  "httpx[http2]>=0.24,<0.28",
+  "cryptography>=42,<45"
+]
 license = { file = "LICENSE" }
 
 classifiers = [
   "Programming Language :: Python :: 3",
   "Programming Language :: Python :: 3 :: Only",
-  "Programming Language :: Python :: 3.9",
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
@@ -22,12 +24,28 @@ classifiers = [
   "Intended Audience :: Developers",
   "Topic :: Internet :: WWW/HTTP"
 ]
-keywords = ["mercari", "mercari-shops", "graphql", "async", "httpx"]
+keywords = ["mercari", "mercari-shops", "mercari-shops.com", "jp.mercari.com", "graphql", "async", "httpx", "dpop"]
 
 [project.urls]
 Homepage = "https://github.com/EricMeteorite"
 Repository = "https://github.com/EricMeteorite/mercapi_shops"
 Issues = "https://github.com/EricMeteorite/mercapi_shops/issues"
+
+[project.optional-dependencies]
+# 可选：一键装开发/测试工具（不影响最小安装）
+dev = [
+  "pytest>=7",
+  "pytest-asyncio>=0.23",
+  "pytest-cov>=4",
+  "ruff>=0.5",
+  "mypy>=1.10",
+  "types-requests"
+]
+# 可选：Linux 上的事件循环/压缩加速（非必须）
+speedups = [
+  "uvloop>=0.17; sys_platform == 'linux'",
+  "brotlicffi>=1.1.0; platform_python_implementation != 'PyPy'"
+]
 
 [build-system]
 requires = ["setuptools>=61.0", "wheel"]
