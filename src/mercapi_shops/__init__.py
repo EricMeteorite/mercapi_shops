@@ -8,4 +8,4 @@ from .mercapi_shops import MercapiShops
 
 __all__ = ["MercapiShops"]
 
-__version__ = "0.0.2"
+__version__ = "0.0.4"

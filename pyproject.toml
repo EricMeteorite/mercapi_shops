@@ -1,12 +1,12 @@
 [project]
 name = "mercapi-shops"
-version = "0.0.2"
+version = "0.0.4"
 description = "Unofficial Mercari-Shops (mercari-shops.com) async client"
 authors = [{ name = "EricMeteorite" }]
 readme = { file = "README.md", content-type = "text/markdown" }
 requires-python = ">=3.9"
-dependencies = ["httpx>=0.24"]  # 或更保守："httpx>=0.24,<0.28"
-license = { file = "LICENSE" }  # ★ 建议新增
+dependencies = ["httpx[http2]>=0.24"]
+license = { file = "LICENSE" }
 
 classifiers = [
   "Programming Language :: Python :: 3",
@@ -24,7 +24,7 @@ classifiers = [
 ]
 keywords = ["mercari", "mercari-shops", "graphql", "async", "httpx"]
 
-[project.urls]  # ★ 建议新增
+[project.urls]
 Homepage = "https://github.com/EricMeteorite"
 Repository = "https://github.com/EricMeteorite/mercapi_shops"
 Issues = "https://github.com/EricMeteorite/mercapi_shops/issues"

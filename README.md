@@ -103,6 +103,9 @@ asyncio.run(main())
 
 
 ## 版本变更
+**v0.0.4**
+- 修复：mercari-shops.com 2025-10-15 前端更新导致的搜索失败问题。
+
 **v0.0.2**
 - 新增：landing(shop_id, in_stock, keyword, limit)，快速抓取店铺总页首屏；
 - 新增：search(..., local_keyword=...) 二次本地过滤；
